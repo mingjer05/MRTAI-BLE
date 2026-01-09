@@ -1,0 +1,237 @@
+:root {
+    --bg-color: #121212;
+    --panel-bg: #1e1e1e;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --text-color: #e0e0e0;
+    --btn-bg: #333;
+    --btn-hover: #444;
+    --success-color: #4caf50;
+    --error-color: #cf6679;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    max-width: 60px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Panel */
+.status-panel {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.status-indicator {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: var(--btn-bg);
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.status-indicator.connected {
+    background-color: var(--success-color);
+    color: #000;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s, opacity 0.2s;
+    width: 100%;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: #000;
+}
+
+.btn.success {
+    background-color: var(--success-color);
+    color: #000;
+    cursor: default;
+}
+
+/* D-Pad Layout */
+.control-pad {
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left center right"
+        ". down .";
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.d-pad-btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.1s;
+    touch-action: manipulation;
+    /* Prevent zoom */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.d-pad-btn:active,
+.d-pad-btn.active {
+    background-color: var(--primary-color);
+    color: #000;
+    transform: translateY(2px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.up {
+    grid-area: up;
+}
+
+.left {
+    grid-area: left;
+}
+
+.center {
+    grid-area: center;
+    background-color: var(--error-color);
+    color: #000;
+}
+
+.right {
+    grid-area: right;
+}
+
+.down {
+    grid-area: down;
+}
+
+/* Firmware Panel */
+.firmware-panel {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+}
+
+.firmware-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.upload-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-input {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+.terminal {
+    margin-top: 1rem;
+    background: #000;
+    color: #0f0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    padding: 10px;
+    border-radius: 5px;
+    height: 120px;
+    overflow-y: auto;
+    text-align: left;
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+    border: 1px solid #333;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .d-pad-btn {
+        width: 70px;
+        /* Slightly larger for easier touch */
+        height: 70px;
+    }
+
+    .logo {
+        max-width: 100px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        /* Bigger buttons for touch */
+    }
+}
